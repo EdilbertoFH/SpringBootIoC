@@ -9,12 +9,13 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class BeansInjector {
 
-    @Bean
+    @Bean("productMySQLRepository")
+    @P
     public ProductRepositoryA createProductRepositoryA() {
         return new ProductRepositoryA();
     }
 
-    @Bean
+    @Bean("productXMLRepository")
     public ProductRepositoryB createProductRepositoryB() {
         return new ProductRepositoryB();
     }

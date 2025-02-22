@@ -9,12 +9,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 
 public class ProductService {
 
-    @Qualifier("createProductRepositoryA")
+
     @Autowired
+    @Qualifier("productXMLRepository")
     private ProductRepository productRepositoryA;
-    @Qualifier("createProductRepositoryB")
-    @Autowired
-   private ProductRepository productRepositoryB;
 
 
     public ProductService() {
