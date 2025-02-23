@@ -17,10 +17,10 @@ public class SpringBootIoCApplication implements CommandLineRunner {
 
 	private ProductService productService;
 
-	@Autowired
-	public SpringBootIoCApplication( ProductService productService) {
-		this.productService = productService;
-	}
+//	@Autowired
+//	public SpringBootIoCApplication( ProductService productService) {
+//		this.productService = productService;
+//	}
 
 
 	public static void main(String[] args) {
@@ -49,5 +49,11 @@ public class SpringBootIoCApplication implements CommandLineRunner {
 			productService.save("Control Remoto");
 			productService.remove("Mouse USB Generico");
 		};
+	}
+
+	  @Autowired
+	public void setProductService(ProductService productService){
+		this.productService = productService;
+
 	}
 }
