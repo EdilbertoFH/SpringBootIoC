@@ -10,50 +10,26 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
-public class SpringBootIoCApplication implements CommandLineRunner {
+@RestController
+public class SpringBootIoCApplication  {
 	//Instanciacion de objetos almancenados en la configuracion de BEANS manejados directamente por el contenedor de SPRING
 
+	@Autowired
 	private ProductService productService;
-
-//	@Autowired
-//	public SpringBootIoCApplication( ProductService productService) {
-//		this.productService = productService;
-//	}
 
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootIoCApplication.class, args);
 	}
 
-	@Override
-	public void run(String... args) throws Exception {
-		System.out.println("Hello World con la interfaz comand line runer");
-
+	@RequestMapping("/example")
+	public String example() {
+		productService.save("Zapatos Nike Air Force1");
+		return "Hello SprinBootIoC ";
 	}
 
-	@Bean
-	public CommandLineRunner comandoGenerico() {
-		return (args) -> {
-			System.out.println("Hello World con la interfaz comando generico Expresion Landa" );
-
-		};
-	}
-
-	//Probando instanciacion de dependencias con @Autowired
-	@Bean
-	public CommandLineRunner comandoUtilizandoAutowured() {
-		return args -> {
-			System.out.println("PRODUCTSERVICE");
-			productService.save("Control Remoto");
-			productService.remove("Mouse USB Generico");
-		};
-	}
-
-	  @Autowired
-	public void setProductService(ProductService productService){
-		this.productService = productService;
-
-	}
 }
