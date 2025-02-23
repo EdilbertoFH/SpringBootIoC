@@ -1,5 +1,11 @@
 package com.curso.springboot.repository;
 
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+
+@Repository("productMySQLRepository")
+@Primary
 public class ProductRepositoryA implements ProductRepository{
 
     public ProductRepositoryA() {

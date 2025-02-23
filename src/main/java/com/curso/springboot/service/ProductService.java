@@ -5,13 +5,15 @@ import com.curso.springboot.repository.ProductRepositoryA;
 import com.curso.springboot.repository.ProductRepositoryB;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-
+@Service
 public class ProductService {
 
 
     @Autowired
-    @Qualifier("productXMLRepository")
+    @Qualifier("productMySQLRepository")
     private ProductRepository productRepositoryA;
 
 
