@@ -12,20 +12,21 @@ import org.springframework.stereotype.Service;
 public class ProductService {
 
 
+
+    //@Qualifier("productMySQLRepository")
+    private ProductRepository productRepository;
+
     @Autowired
-    @Qualifier("productMySQLRepository")
-    private ProductRepository productRepositoryA;
-
-
-    public ProductService() {
+    public ProductService( @Qualifier("productXMLRepository") ProductRepository productRepository ) {
+        this.productRepository = productRepository;
         System.out.println("Creando instancia de " + this.getClass().getSimpleName());
     }
 
     public void save(String nombre){
-        productRepositoryA.save(nombre);
+        productRepository.save(nombre);
 
     }
     public void remove(String nombre){
-        productRepositoryA.save(nombre);
+        productRepository.save(nombre);
     }
 }
