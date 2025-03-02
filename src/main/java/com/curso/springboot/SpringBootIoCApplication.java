@@ -6,6 +6,7 @@ import com.curso.springboot.service.ProductService;
 import com.curso.springboot.service.ShopingCarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,6 +22,8 @@ import java.util.List;
 public class SpringBootIoCApplication  {
 	//Instanciacion de objetos almancenados en la configuracion de BEANS manejados directamente por el contenedor de SPRING
 
+	@Value("${messages.success} y concatenando mas contenido")
+	private String message;
 	@Autowired
 	private ShopingCarService shopingCarService;
 
@@ -32,10 +35,9 @@ public class SpringBootIoCApplication  {
 		SpringApplication.run(SpringBootIoCApplication.class, args);
 	}
 
-	@RequestMapping("/example")
+	@RequestMapping("/get-message")
 	public String example() {
-		productService.save("Zapatos Nike Air Force1");
-		return "Hello SprinBootIoC ";
+		return message;
 	}
 
 	@RequestMapping("/add-product")
