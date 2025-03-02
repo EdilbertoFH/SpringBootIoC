@@ -11,9 +11,11 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.annotation.RequestScope;
 
 @Service
-@Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
+@RequestScope
+//@Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class ProductService {
 
     @PostConstruct
